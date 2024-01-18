@@ -65,12 +65,39 @@ estatura = 1.80
 #     print('No hay prendas')
 # elif sexo == 'Masculino' and estatura >= 1.30 and estatura <= 1.49:
 #     print('Si hay ropa')
+
+sexo = 'Femenino'
+estatura = 1.45
     
 if sexo == 'Masculino':
     if estatura > 1.30 and estatura <1.49:
         print('Si hay ropa')
     else:
         print('No hay Ropa')
-else:
-    # sexo = 'Femenino'
+elif sexo == 'Femenino':
+    # Sexo Femenino
+    if estatura > 1.10 and estatura < 1.49:
+        print('Si hay ropa')
+    else:
+        print('No hay ropa')
+
+        # Ó usamos pass o usamos la lógica
+        # pass > pasa, no hace nada pero nos permite dejar la condicion vacía
+        pass
+
+# OPERADOR TERNARIO
+# Condición que sirve para ejecutarse en una sola linea de código y en base a la condicion retornara un valor u otro
+
+# Si el usuario es PERUANO pagará 5 soles, si es EXTRANGERO pagara 8 soles
+
+nacionalidad = 'ECUATORIANO'
+
+if nacionalidad == 'PERUANO':
+    print('Paga 5 soles')
+else: 
+    print('Paga 8 soles')
+
+#       RESULTADO SI ES True if (CONDICIONAL)           else(RESULTADO SI ES False)
+resultado = 'Pague 5 soles' if nacionalidad == 'PERUANO' else 'Pague 8 soles'
+print(resultado)
     
