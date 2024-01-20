@@ -1,4 +1,29 @@
 console.log('Hola')
+const button = document.getElementById('crearProductoBtn')
+const nombreProducto = document.getElementById('nombre')
+const precioProducto = document.getElementById('precio')
+const disponibleProducto = document.getElementById('disponible')
+
+function crearProducto(e) {
+    e.preventDefault()
+    const body = {
+        nombre : nombreProducto.value,
+        precio: +precioProducto.value,
+        disponible: disponibleProducto.checked
+    }
+    crearProductoRequest(body) //....
+}
+
+async function crearProductoRequest(body) {
+    await fetch('http://127.0.0.1_5000/producto', {method: 'POST', body: JSON.stringify(body), header:{
+        // Los headers sirven para enviar un encabezado de la peticion es decir gracias a estos el backend sabra que infomacion recibe, cuestiones de autenticacion, el origen de la peticion entre otros
+        'Content-Type': 'application/json' // Indicar que lo que estamos enviando por eñl body es un JSON
+    }})
+
+    return solicitud.status === 200
+}
+
+button.addEventListener('click',crearProducto)
 
 async function pedirProductos() {
     const solicitud = await fetch('http://127.0.0.1:5000/productos')
