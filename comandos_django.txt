@@ -1,0 +1,10 @@
+django-admin startproject recetario NOMBRE_PROYECTO [UBICACION]     > Inicializa un nuevo proyecto colocandole opcionalmente la ubicaición / . al funal - Creara los archivos sin crear una carpeta global
+python manage.py runserver                                          > Levanta el servidor de desarrollo
+python manage.py showmigrations                                     > Muestra el listado de migraciones y las que han sido ejecutadas con un [X]
+python manage.py migrate                                            > Ejecuta las migraciones restantes
+python manage.py sqlmigrate NOMBRE_APP NUM_MIGRACION                > Muestra el código SQL de esa migración pero no la ejecutara
+python manage.py createsuperuser                                    > Crea usuario admin de superusuario para acceder al panel de administracion
+python manage.py startapp NOMBRE_APP                                > Crea una aplicacion dentro del proyecto actual
+
+
+django / password                                                   > 123456/Tecsup
