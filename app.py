@@ -67,30 +67,36 @@ def gestionarUsuarios():
 @app.route('/usuario', methods=['POST'])
 def crearUsuario():
     # Capturar la informacion
-    data = request.get_json()
+    try:
+        data = request.get_json()
 
-    # Crear nuevo usuario
-    nuevoUsuario = UsuarioModel (
-        nombre = data.get('nombre'),
-        apellido = data.get('apellido'),
-        correo = data.get('correo'),
-        sexo = data.get('sexo'),
-        fechaNacimiento = data.get('fechaNacimiento')
-    )
+        # Crear nuevo usuario
+        nuevoUsuario = UsuarioModel (
+                                    nombre = data.get('nombre'),
+                                    apellido = data.get('apellido'),
+                                    correo = data.get('correo'),
+                                    sexo = data.get('sexo'),
+                                    fechaNacimiento = data.get('fechaNacimiento')
+        )
 
-    # Agregar este nuevo registro a la base de datos de manera temporal
-    conexion.session.add(nuevoUsuario)
+        # Agregar este nuevo registro a la base de datos de manera temporal
+        conexion.session.add(nuevoUsuario)
 
-    print('Antes del commit', nuevoUsuario.id)
+        print('Antes del commit', nuevoUsuario.id)
 
-    # commit sirve para transacciones y pasarle que todos los cambios realizados en la base de dtos permanexcan de manera permanente 
-    conexion.session.commit()
+        # commit sirve para transacciones y pasarle que todos los cambios realizados en la base de dtos permanexcan de manera permanente 
+        conexion.session.commit()
 
-    print('Despues de commit', nuevoUsuario.id)
+        print('Despues de commit', nuevoUsuario.id)
 
-    return {
-        'message': 'Usuario creado exitosamente'
-    }, 201
+        return {
+            'message': 'Usuario creado exitosamente'
+        }, 201
+    except Exception as error:
+        return {
+            'message': 'Error al crear el usuario',
+            'content': error.args
+        }
     
 
 @app.route('/')
